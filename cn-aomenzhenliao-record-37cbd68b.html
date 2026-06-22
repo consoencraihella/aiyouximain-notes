@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门真料 · 信息查阅平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background-color: #f5f3f0;
+            color: #1e1a18;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0f1a2b 0%, #1a2a3f 60%, #20354e 100%);
+            color: #eae6df;
+            padding: 80px 20px 70px;
+            text-align: center;
+            width: 100%;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: #f2ede6;
+        }
+
+        .hero .accent-dot {
+            color: #b6a28b;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto;
+            color: #cfc6ba;
+            font-weight: 300;
+        }
+
+        /* 浅色正文区 */
+        .content-area {
+            background-color: #ffffff;
+            margin: -24px 0 40px;
+            border-radius: 36px 36px 24px 24px;
+            padding: 48px 36px 60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 2;
+        }
+
+        .intro-sentence {
+            font-size: 1.3rem;
+            font-weight: 350;
+            border-left: 4px solid #b6a28b;
+            padding-left: 22px;
+            margin-bottom: 36px;
+            color: #2b2a27;
+            letter-spacing: 0.3px;
+        }
+
+        .intro-sentence span {
+            background: #f1ede8;
+            padding: 0 6px;
+            font-style: italic;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 450;
+            margin: 42px 0 16px;
+            color: #1e2b3a;
+            border-bottom: 1px solid #e3ddd4;
+            padding-bottom: 6px;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .para {
+            margin: 18px 0;
+            color: #2f2c27;
+        }
+
+        .para a {
+            color: #9b6d4b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .para a:hover {
+            border-bottom: 1px solid #9b6d4b;
+            color: #7a5539;
+        }
+
+        /* 特点卡片 — 温和陈列 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 28px 0 16px;
+        }
+
+        .feature-item {
+            background: #faf8f5;
+            border-radius: 22px;
+            padding: 18px 22px;
+            flex: 1 1 200px;
+            border: 1px solid #e9e1d8;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: background 0.2s;
+        }
+
+        .feature-item:hover {
+            background: #f3eee7;
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2f3e4f;
+            margin-bottom: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4e4942;
+            margin: 0;
+        }
+
+        .quiet-closing {
+            background: #f6f2ec;
+            border-radius: 28px;
+            padding: 28px 24px;
+            margin: 40px 0 10px;
+            border-left: 3px solid #b6a28b;
+            color: #2f2c27;
+        }
+
+        .quiet-closing p {
+            margin: 0 0 6px;
+        }
+
+        .quiet-closing .small-note {
+            font-size: 0.9rem;
+            color: #6e655b;
+            margin-top: 6px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0d8ce;
+            margin: 30px 0 10px;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 24px 0 0;
+        }
+
+        .faq-mini details {
+            background: #faf8f5;
+            padding: 10px 16px;
+            border-radius: 30px;
+            border: 1px solid #e8dfd6;
+            cursor: pointer;
+        }
+
+        .faq-mini details summary {
+            font-weight: 430;
+            color: #2b3a47;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-mini details summary::before {
+            content: "▹";
+            color: #9b6d4b;
+            font-size: 1.1rem;
+        }
+
+        .faq-mini details p {
+            margin: 12px 0 4px 18px;
+            color: #4b443b;
+            font-size: 0.95rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content-area {
+                padding: 32px 18px 40px;
+                margin: -16px 0 30px;
+            }
+            .intro-sentence {
+                font-size: 1.1rem;
+                padding-left: 16px;
+            }
+            .feature-grid {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 16px 50px;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 16px 40px;
+            color: #7d7369;
+            font-size: 0.85rem;
+            width: 100%;
+            background: #f5f3f0;
+        }
+
+        footer a {
+            color: #7d7369;
+            border-bottom: 1px dotted #c6b9ab;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #4f4439;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="hero">
+            <h1>澳门真料<span class="accent-dot"> · </span> 信息据点</h1>
+            <p>从零散查询到集中对照，让延伸阅读成为习惯</p>
+        </header>
+
+        <main class="content-area">
+            <!-- 开场短句 -->
+            <div class="intro-sentence">
+                “每次搜索都像打开一扇门，而<strong>澳门真料</strong>提供的，是更清晰的门牌号。”
+            </div>
+
+            <!-- 承接段落：从日常查询说起 -->
+            <p class="para">
+                在浏览信息、查阅资料或做对照整理时，很多人习惯同时打开好几个标签页。可页面一多，注意力反而被稀释了。这时候，一个内容集中、分类清晰的站点就能省下不少精力。<a href="https://cn-aomenzhenliao.com">澳门真料</a>恰好就是这样一处可以穿插在日常检索流程中的信息角落——它不追求面面俱到，但每个条目都经过梳理，方便你快速定位、对比和摘录。
+            </p>
+
+            <p class="para">
+                有人把它当作延伸阅读的起点：先在这里瞄一眼脉络，再带着问题去更具体的页面深挖。也有人用它做快速对照，尤其是遇到术语、名称或背景需要核实的时候，不用反复跳转搜索。
+            </p>
+
+            <!-- 特点列表（温和陈列） -->
+            <div class="section-title">几个顺手的地方</div>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>条目式梳理</h3>
+                    <p>每个主题都拆解为可单独阅读的单元，方便跳着看或者回头复查。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>中性表述</h3>
+                    <p>不使用夸张的语气，更注重事实罗列与来源对照，减少信息噪音。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>适合对照</h3>
+                    <p>同类内容常被编排在一起，省去自己拼凑对比的时间，尤其适合做笔记时参考。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>延伸索引</h3>
+                    <p>每个条目末尾通常带有相关方向提示，方便往下继续探索，而不至于迷失。</p>
+                </div>
+            </div>
+
+            <!-- 从场景切入：查询 / 对照 / 延伸阅读 -->
+            <div class="section-title">三个常见使用场景</div>
+            <p class="para">
+                <strong>日常查询：</strong>偶尔想到某个概念或名称，打开 <a href="https://cn-aomenzhenliao.com">澳门真料</a> 直接搜索或浏览分类，往往几分钟就能找到概要，不用费力筛选。
+            </p>
+            <p class="para">
+                <strong>快速对照：</strong>当需要比较不同表述、时间线或数据时，页面内的分段和列表能让差异一目了然，适合做简单整理或核实。
+            </p>
+            <p class="para">
+                <strong>延伸阅读：</strong>如果对某个话题产生了兴趣，顺着站内提供的相关条目或外部链接继续探索，比漫无目的地搜索更有方向感。
+            </p>
+
+            <!-- 温和的信息提示 -->
+            <div class="quiet-closing">
+                <p>📎 一点使用建议：可以先从自己最感兴趣的分类入手，读上两三条，感受一下内容的编排风格。如果觉得对胃口，再逐步扩大阅读范围。信息整理得再好，也得用起来才有价值。</p>
+                <p class="small-note">—— 适合做笔记时随手打开，也适合在碎片时间里慢慢翻看。</p>
+            </div>
+
+            <!-- FAQ 摘要（保持克制） -->
+            <div class="section-title">常见问题 · 简短摘要</div>
+            <div class="faq-mini">
+                <details>
+                    <summary>澳门真料内容更新频率如何？</summary>
+                    <p>没有固定周期，但重点条目会定期复核，遇到明显的信息变动会及时修正。建议隔几周回来扫一眼。</p>
+                </details>
+                <details>
+                    <summary>站内信息是否可以作为唯一参考？</summary>
+                    <p>更适合作为索引和对照的起点，重要判断建议交叉核实其他信源。每个条目都尽力做到准确，但无法替代一手资料或专业解读。</p>
+                </details>
+                <details>
+                    <summary>可以直接复制或引用内容吗？</summary>
+                    <p>个人笔记、学习用途没问题。公开引用时请注明出处，保持对原始整理的尊重。</p>
+                </details>
+            </div>
+
+            <hr>
+            <p style="color: #5f554a; font-size: 0.95rem; margin-top: 6px;">
+                如果觉得这个站点符合你的查阅习惯，不妨把它放进书签夹。毕竟，好用的信息整理页面，值得留一个固定位置。
+            </p>
+        </main>
+
+        <footer>
+            <p><a href="https://cn-aomenzhenliao.com">澳门真料</a> · 信息查阅 · 对照参考</p>
+            <p style="margin-top: 6px; color: #9a8f83;">开放分享，保持审慎 · 内容仅供学习与参照</p>
+        </footer>
+    </div>
+</body>
+</html>

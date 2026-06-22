@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>稳定入口 · 澳门真料说明页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+            background: #f4f9fc;
+            color: #1a2f3c;
+            line-height: 1.6;
+            padding: 0 1rem;
+        }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2.2rem 0 3rem;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(145deg, #d9eef5 0%, #b6dce8 100%);
+            border-radius: 2rem;
+            padding: 2.8rem 2rem;
+            margin-bottom: 2.8rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(30, 100, 120, 0.08);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #063b4a;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #1f5668;
+            border-bottom: 2px solid rgba(20, 100, 120, 0.2);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        .hero .sub {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #1d4b5b;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.6rem;
+            margin: 2.2rem 0;
+        }
+
+        @media (min-width: 560px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 2px 8px rgba(0, 60, 80, 0.04);
+            border: 1px solid #d7e8ef;
+            transition: box-shadow 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 80, 100, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0b4b5e;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3::before {
+            content: "▹";
+            color: #2596b3;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 0.96rem;
+            color: #1e3e4b;
+        }
+
+        .card .small-note {
+            font-size: 0.85rem;
+            color: #2f6a7c;
+            margin-top: 0.7rem;
+            border-left: 3px solid #a7cddb;
+            padding-left: 0.6rem;
+        }
+
+        /* 特色亮点卡片 - 单独区域 */
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 2rem 0 1.6rem;
+        }
+
+        .hl-item {
+            background: #ecf6fa;
+            border-radius: 60px;
+            padding: 0.5rem 1.3rem;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: #094a5c;
+            border: 1px solid #bfdae6;
+            letter-spacing: 0.02em;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        /* 使用建议与场景区块 */
+        .section-block {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 1.8rem 1.6rem;
+            margin: 1.8rem 0;
+            border: 1px solid #d2e3ec;
+        }
+
+        .section-block h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #073e4e;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #b2d3df;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .section-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-block li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.96rem;
+            color: #173d4b;
+        }
+
+        .section-block li::before {
+            content: "•";
+            color: #3097b5;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            margin: 1.2rem 0 0.4rem;
+        }
+
+        @media (min-width: 500px) {
+            .faq-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .faq-item {
+            background: #f0f7fa;
+            padding: 0.9rem 1.1rem;
+            border-radius: 14px;
+            border-left: 4px solid #5faec9;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: #094654;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #1a4a5b;
+        }
+
+        /* 可信提示 / 访问说明 */
+        .access-note {
+            background: #ddeef4;
+            border-radius: 20px;
+            padding: 1.4rem 1.6rem;
+            text-align: center;
+            margin: 2rem 0 1.5rem;
+            border: 1px solid #b3d3e0;
+        }
+
+        .access-note p {
+            font-size: 0.98rem;
+            color: #07303d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .access-note .link-wrap {
+            margin-top: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .access-note a {
+            color: #07576e;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #7db4c9;
+            transition: border 0.1s;
+        }
+
+        .access-note a:hover {
+            border-bottom-color: #043845;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #3e6f80;
+            border-top: 1px solid #c3dae5;
+            padding-top: 1.2rem;
+        }
+
+        .btn-soft {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #72b6ce;
+            border-radius: 40px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.85rem;
+            color: #094654;
+            text-decoration: none;
+            transition: 0.1s;
+            margin: 0.1rem 0.2rem;
+        }
+
+        .btn-soft:hover {
+            background: #c1dfea;
+            border-color: #307d96;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .section-block {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- hero 区 -->
+        <div class="hero">
+            <h1>澳门真料 · 稳定信息入口</h1>
+            <div class="tagline">整理 · 参照 · 可信</div>
+            <div class="sub">
+                一份围绕澳门真料的内容说明，提供产品摘要、使用思路与场景参考。
+                页面本身不构成引导，仅用作了解及访问前的浏览辅助。
+            </div>
+        </div>
+
+        <!-- 摘要 & 产品说明卡片 -->
+        <div class="grid">
+            <div class="card">
+                <h3>产品摘要</h3>
+                <p><strong>澳门真料</strong> 是一类以澳门本地资讯、文化汇总及实用索引为线索的内容集合。其定位偏向资料整理与参考，并非即时工具或服务平台。页面结构以分类卡片及条目式说明为主，便于快速概览。</p>
+                <div class="small-note">适合希望系统浏览澳门相关整理信息的用户</div>
+            </div>
+            <div class="card">
+                <h3>核心特点</h3>
+                <p>信息组织偏重条理：按主题、场景或区域进行划分，减少冗余。每部分附带简短说明，并保持内容来源可溯。同时注重更新节奏，避免信息过时。整体风格内敛、实用，不堆砌装饰。</p>
+                <div class="small-note">分类明确 · 克制更新 · 可读性强</div>
+            </div>
+            <div class="card">
+                <h3>使用建议</h3>
+                <p>建议将页面作为初始参考站，先浏览摘要与分类，再根据需求深入具体条目。移动端浏览效果良好，网格卡片适合快速定位兴趣点。若需长期保存，可自行摘录关键段落。</p>
+                <div class="small-note">优先使用标签筛选或关键词查找</div>
+            </div>
+        </div>
+
+        <!-- 亮点标签 -->
+        <div class="highlights">
+            <span class="hl-item">📋 结构化目录</span>
+            <span class="hl-item">🔍 非诱导式呈现</span>
+            <span class="hl-item">🧩 分类卡片</span>
+            <span class="hl-item">📱 响应式布局</span>
+            <span class="hl-item">⚓ 稳定入口</span>
+        </div>
+
+        <!-- 使用场景区块（差异化内容） -->
+        <div class="section-block">
+            <h2>适用场景</h2>
+            <ul>
+                <li>在需要快速了解澳门特定话题的概要时，可作为首轮浏览的资料页。</li>
+                <li>作为信息索引与跳转的中转站，帮助筛选后续深入阅读的方向。</li>
+                <li>移动设备上碎片化阅读，卡片与分段结构便于随时暂停与继续。</li>
+                <li>作为内容排布的样例，供其他信息整理项目参考其分类思路。</li>
+            </ul>
+        </div>
+
+        <!-- FAQ 摘要（简洁，不铺陈） -->
+        <div class="section-block" style="background: #f1f9fd;">
+            <h2>常见疑问摘要</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <strong>内容多久更新？</strong>
+                    <span>视主题变动而定，通常以月为单位进行复核与微调，无固定频率。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>是否包含外部链接？</strong>
+                    <span>部分卡片会附带延伸阅读链接，但数量克制，且均指向稳定来源。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>可以复制使用吗？</strong>
+                    <span>内容基于公开整理，引用请保留出处。整体作为说明页，不限制个人使用。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>有移动端专用版吗？</strong>
+                    <span>当前页面已适配手机与平板，无需额外客户端。字体与间距均经过调整。</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 可信 / 克制的访问说明 (核心链接) -->
+        <div class="access-note">
+            <p>
+                本页为产品说明型介绍页，所有信息力求平实可靠。
+                若希望直接浏览原始内容聚合站，可前往
+                <span class="link-wrap"><a href="https://official-aomenzhenliao.com">澳门真料</a></span>。
+            </p>
+            <p style="font-size:0.9rem; margin-top:0.6rem; color:#1a5568;">
+                该页面保持独立，不嵌入第三方跟踪脚本，不包含诱导注册或下载模块。
+            </p>
+            <div style="margin-top: 0.8rem;">
+                <span class="btn-soft">仅作参照</span>
+                <span class="btn-soft">无广告干扰</span>
+                <span class="btn-soft">信息精简</span>
+            </div>
+        </div>
+
+        <!-- 附加卡片：稳定入口说明 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; margin: 0.5rem 0 0.8rem;">
+            <div style="background: #eaf3f8; border-radius: 20px; padding: 0.8rem 1.2rem; flex:1; min-width:180px;">
+                <span style="font-weight:600; color:#034353;">入口稳定性</span>
+                <span style="display: block; font-size:0.9rem; color:#1b4f61;">长期域名，定期维护，HTTPS 加密传输。</span>
+            </div>
+            <div style="background: #eaf3f8; border-radius: 20px; padding: 0.8rem 1.2rem; flex:1; min-width:180px;">
+                <span style="font-weight:600; color:#034353;">页面说明</span>
+                <span style="display: block; font-size:0.9rem; color:#1b4f61;">所有卡片均可直接阅读，无需登录或注册。</span>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="footer-note">
+            澳门真料 · 产品介绍页 ｜ 内容持续优化 ｜ 提供稳定访问入口
+        </div>
+
+    </div>
+</body>
+</html>
